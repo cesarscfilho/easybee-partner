@@ -8,7 +8,7 @@ import { AppState, useColorScheme } from "react-native";
 
 import config from "../tamagui.config";
 
-export default function Layout() {
+export default function RootLayout() {
   const appState = React.useRef(AppState.currentState);
   const [appStateVisible, setAppStateVisible] = React.useState(
     appState.current,

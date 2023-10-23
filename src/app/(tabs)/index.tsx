@@ -1,7 +1,7 @@
 import { useIsFocused } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { H3, XStack, YStack } from "tamagui";
+import { H3, Text, XStack, YStack } from "tamagui";
 
 export default function Index() {
   const isFocused = useIsFocused();
@@ -21,7 +21,9 @@ export default function Index() {
         backgroundColor="$background"
         borderTopWidth="$1"
         borderTopColor="$background"
-      ></YStack>
+      >
+        <Text>Hi</Text>
+      </YStack>
       {isFocused && <StatusBar style="light" />}
     </YStack>
   );
