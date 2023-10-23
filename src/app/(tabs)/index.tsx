@@ -30,7 +30,7 @@ export default function Index() {
             paddingHorizontal="$3"
             fontWeight="bold"
           >
-            Proximos serviços
+            Solicitaçõs pendentes
           </Text>
           <YStack flex={1} overflow="hidden" backgroundColor="$sms"></YStack>
         </YStack>
@@ -42,7 +42,7 @@ export default function Index() {
             paddingHorizontal="$3"
             fontWeight="bold"
           >
-            Solicitaçõs pendentes
+            Proximos serviços
           </Text>
         </YStack>
       </YStack>
