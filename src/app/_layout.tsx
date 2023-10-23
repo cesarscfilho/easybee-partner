@@ -5,7 +5,9 @@ import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import React from "react";
 import { AppState, useColorScheme } from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
+import { NavigationThemeProvider } from "../providers/navigation-theme-provider";
 import config from "../tamagui.config";
 
 export default function RootLayout() {
@@ -45,15 +47,19 @@ export default function RootLayout() {
   return (
     <TamaguiProvider config={config}>
       <Theme name={activeColorScheme}>
-        <Stack>
-          <Stack.Screen
-            name="(tabs)"
-            options={{
-              title: "Home",
-              headerShown: false,
-            }}
-          />
-        </Stack>
+        <NavigationThemeProvider>
+          <SafeAreaProvider>
+            <Stack>
+              <Stack.Screen
+                name="(tabs)"
+                options={{
+                  title: "Home",
+                  headerShown: false,
+                }}
+              />
+            </Stack>
+          </SafeAreaProvider>
+        </NavigationThemeProvider>
       </Theme>
     </TamaguiProvider>
   );

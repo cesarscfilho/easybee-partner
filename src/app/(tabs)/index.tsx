@@ -22,7 +22,29 @@ export default function Index() {
         borderTopWidth="$1"
         borderTopColor="$background"
       >
-        <Text>Hi</Text>
+        <YStack height={170}>
+          <Text
+            backgroundColor="$sms"
+            color="white"
+            paddingVertical="$3"
+            paddingHorizontal="$3"
+            fontWeight="bold"
+          >
+            Proximos serviços
+          </Text>
+          <YStack flex={1} overflow="hidden" backgroundColor="$sms"></YStack>
+        </YStack>
+        <YStack flexGrow={2}>
+          <Text
+            backgroundColor="$sms"
+            color="white"
+            paddingVertical="$3"
+            paddingHorizontal="$3"
+            fontWeight="bold"
+          >
+            Solicitaçõs pendentes
+          </Text>
+        </YStack>
       </YStack>
       {isFocused && <StatusBar style="light" />}
     </YStack>
