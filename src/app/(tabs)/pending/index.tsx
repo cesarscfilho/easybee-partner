@@ -1,6 +1,6 @@
 import { YStack } from "tamagui";
 
-import { ContractPendingCard } from "../../../components/card-contract-pending";
+import { ContractPendingCard } from "@/components/card-contract-pending";
 
 export default function Index() {
   return (

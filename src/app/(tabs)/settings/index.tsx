@@ -9,7 +9,7 @@ import {
 } from "@tamagui/lucide-icons";
 import { H3, ListItem, Separator, YStack } from "tamagui";
 
-import { UserAvatar } from "../../../components/use-avatar";
+import { UserAvatar } from "@/components/use-avatar";
 
 export default function Index() {
   return (

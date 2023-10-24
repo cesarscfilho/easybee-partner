@@ -7,8 +7,8 @@ import React from "react";
 import { AppState, useColorScheme } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
-import { NavigationThemeProvider } from "../providers/navigation-theme-provider";
-import config from "../tamagui.config";
+import { NavigationThemeProvider } from "@/providers/navigation-theme-provider";
+import config from "@/tamagui.config";
 
 export default function RootLayout() {
   const appState = React.useRef(AppState.currentState);
