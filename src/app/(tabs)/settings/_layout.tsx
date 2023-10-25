@@ -16,6 +16,13 @@ export default function Layout() {
           headerBackTitle: "Voltar",
         }}
       />
+      <Stack.Screen
+        name="documents"
+        options={{
+          title: "Documentos Pessoais",
+          headerBackTitle: "Voltar",
+        }}
+      />
     </Stack>
   );
 }

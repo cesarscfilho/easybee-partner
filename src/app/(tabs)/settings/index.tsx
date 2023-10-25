@@ -60,13 +60,14 @@ export default function Index() {
         />
 
         <ListItem
+          onPress={() => router.push(`/(tabs)/settings/documents`)}
           title="Documentos Pessoais"
           subTitle="RG, CNH"
           icon={CreditCard}
           iconAfter={ChevronRight}
         />
 
-        <ListItem hoverTheme icon={LogOut} iconAfter={ChevronRight}>
+        <ListItem theme="red" hoverTheme icon={LogOut} iconAfter={ChevronRight}>
           Sair
         </ListItem>
       </YStack>
