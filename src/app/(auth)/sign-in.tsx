@@ -1,5 +1,6 @@
 import { Image } from "expo-image";
 import { Link } from "expo-router";
+import React from "react";
 import { YStack, Button } from "tamagui";
 
 import { SignInForm } from "@/components/forms/signin-form";

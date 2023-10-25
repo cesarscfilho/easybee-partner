@@ -59,7 +59,7 @@ export function SignInForm() {
         }}
         render={({ field: { onChange, onBlur, value } }) => (
           <Animated.View
-            entering={FadeInDown.delay(200).duration(1000).springify()}
+            entering={FadeInDown.delay(400).duration(1000).springify()}
           >
             <Input
               secureTextEntry
