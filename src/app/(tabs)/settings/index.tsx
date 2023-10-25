@@ -6,12 +6,16 @@ import {
   MapPin,
   Wallet,
   LogOut,
+  CreditCard,
 } from "@tamagui/lucide-icons";
+import { useRouter } from "expo-router";
 import { H3, ListItem, Separator, YStack } from "tamagui";
 
 import { UserAvatar } from "@/components/use-avatar";
 
 export default function Index() {
+  const router = useRouter();
+
   return (
     <YStack fullscreen padding="$3" space="$3">
       <YStack alignItems="center" space="$3">
@@ -48,9 +52,17 @@ export default function Index() {
         />
 
         <ListItem
+          onPress={() => router.push(`/(tabs)/settings/bank-informations`)}
           title="Dados Bancários"
           subTitle="Pix, Cartão de Crédito"
           icon={Wallet}
+          iconAfter={ChevronRight}
+        />
+
+        <ListItem
+          title="Documentos Pessoais"
+          subTitle="RG, CNH"
+          icon={CreditCard}
           iconAfter={ChevronRight}
         />
 

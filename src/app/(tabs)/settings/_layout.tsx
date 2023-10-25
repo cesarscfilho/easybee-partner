@@ -6,7 +6,14 @@ export default function Layout() {
       <Stack.Screen
         name="index"
         options={{
-          title: "Settings",
+          title: "Configurações",
+        }}
+      />
+      <Stack.Screen
+        name="bank-informations"
+        options={{
+          title: "Dados Bancários",
+          headerBackTitle: "Voltar",
         }}
       />
     </Stack>
