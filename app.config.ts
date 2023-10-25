@@ -41,7 +41,16 @@ const config: ExpoConfig = {
       projectId,
     },
   },
-  plugins: ["expo-router"],
+  plugins: [
+    "expo-router",
+    [
+      "expo-image-picker",
+      {
+        photosPermission:
+          "The app accesses your photos to let you share them with your friends.",
+      },
+    ],
+  ],
   runtimeVersion: {
     policy: "sdkVersion",
   },
