@@ -1,12 +1,15 @@
 import { useIsFocused } from "@react-navigation/native";
+import { ChevronRight } from "@tamagui/lucide-icons";
 import { Image } from "expo-image";
+import { useRouter } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { H3, Text, XStack, YStack } from "tamagui";
+import { Button, H3, Text, XStack, YStack } from "tamagui";
 
 export default function Index() {
   const isFocused = useIsFocused();
   const insets = useSafeAreaInsets();
+  const router = useRouter();
 
   return (
     <YStack fullscreen paddingTop={insets.top} backgroundColor="$sms">
@@ -37,7 +40,20 @@ export default function Index() {
           >
             Solicitaçõs pendentes
           </Text>
-          <YStack flex={1} overflow="hidden" backgroundColor="$sms"></YStack>
+          <YStack
+            flex={1}
+            backgroundColor="$sms"
+            padding="$3"
+            justifyContent="center"
+          >
+            <Button
+              onPress={() => router.push(`/(tabs)/pending`)}
+              theme="green_active"
+            >
+              Você possui 2 contratos pendentes
+              <ChevronRight />
+            </Button>
+          </YStack>
         </YStack>
         <YStack flexGrow={2}>
           <Text

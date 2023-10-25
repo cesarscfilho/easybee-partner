@@ -1,4 +1,5 @@
 import { ChevronLeft, ChevronRight } from "@tamagui/lucide-icons";
+import { StatusBar } from "expo-status-bar";
 import { H4, ListItem, Separator, Text, XStack, YStack } from "tamagui";
 
 export default function Index() {
@@ -19,25 +20,30 @@ export default function Index() {
         <Text>SAB</Text>
       </XStack>
       <XStack justifyContent="space-around">
-        <Text backgroundColor="$backgroundFocus" padding="$2">
+        <Text backgroundColor="$backgroundFocus" padding="$2" borderRadius="$3">
           24
         </Text>
-        <Text backgroundColor="$backgroundFocus" padding="$2">
+        <Text backgroundColor="$backgroundFocus" padding="$2" borderRadius="$3">
           25
         </Text>
-        <Text backgroundColor="$backgroundFocus" padding="$2">
+        <Text backgroundColor="$backgroundFocus" padding="$2" borderRadius="$3">
           26
         </Text>
-        <Text backgroundColor="$blue10" padding="$2" borderRadius="$3">
+        <Text
+          backgroundColor="$sms"
+          padding="$2"
+          borderRadius="$3"
+          theme={"yellow"}
+        >
           27
         </Text>
-        <Text backgroundColor="$backgroundFocus" padding="$2">
+        <Text backgroundColor="$backgroundFocus" padding="$2" borderRadius="$3">
           28
         </Text>
-        <Text backgroundColor="$backgroundFocus" padding="$2">
+        <Text backgroundColor="$backgroundFocus" padding="$2" borderRadius="$3">
           29
         </Text>
-        <Text backgroundColor="$backgroundFocus" padding="$2">
+        <Text backgroundColor="$backgroundFocus" padding="$2" borderRadius="$3">
           30
         </Text>
       </XStack>
@@ -47,6 +53,7 @@ export default function Index() {
         <ListItem iconAfter={ChevronRight}>Lorem weorw werwer</ListItem>
         <ListItem iconAfter={ChevronRight}>Lorem weorw werwer</ListItem>
       </YStack>
+      <StatusBar style="light" />
     </YStack>
   );
 }

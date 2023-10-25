@@ -1,3 +1,4 @@
+import { useIsFocused } from "@react-navigation/native";
 import {
   ChevronRight,
   UserCircle,
@@ -8,15 +9,17 @@ import {
   CreditCard,
 } from "@tamagui/lucide-icons";
 import { useRouter } from "expo-router";
+import { StatusBar } from "expo-status-bar";
 import { H3, ListItem, Separator, YStack } from "tamagui";
 
 import { UserAvatar } from "@/components/use-avatar";
 
 export default function Index() {
   const router = useRouter();
+  const isFocused = useIsFocused();
 
   return (
-    <YStack fullscreen padding="$3" space="$3">
+    <YStack fullscreen padding="$3">
       <YStack alignItems="center" space="$3">
         <UserAvatar />
         <H3>Cesar Silva</H3>
@@ -60,10 +63,16 @@ export default function Index() {
           iconAfter={ChevronRight}
         />
 
-        <ListItem theme="red" hoverTheme icon={LogOut} iconAfter={ChevronRight}>
+        <ListItem
+          theme="red_active"
+          hoverTheme
+          icon={LogOut}
+          iconAfter={ChevronRight}
+        >
           Sair
         </ListItem>
       </YStack>
+      {isFocused && <StatusBar style="light" />}
     </YStack>
   );
 }

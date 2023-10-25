@@ -1,3 +1,4 @@
+import { useRouter } from "expo-router";
 import { useForm, Controller } from "react-hook-form";
 import Animated, { FadeInDown } from "react-native-reanimated";
 import { Button, Form, Input, Text } from "tamagui";
@@ -8,6 +9,7 @@ type Inputs = {
 };
 
 export function SignInForm() {
+  const router = useRouter();
   const {
     handleSubmit,
     control,
@@ -20,7 +22,7 @@ export function SignInForm() {
   });
 
   const onSubmit = (inputs: Inputs) => {
-    console.log(inputs);
+    router.replace("/(tabs)");
   };
 
   return (
