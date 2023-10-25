@@ -9,14 +9,12 @@ import {
   CreditCard,
 } from "@tamagui/lucide-icons";
 import { useRouter } from "expo-router";
-import { StatusBar } from "expo-status-bar";
 import { H3, ListItem, Separator, YStack } from "tamagui";
 
 import { UserAvatar } from "@/components/use-avatar";
 
 export default function Index() {
   const router = useRouter();
-  const isFocused = useIsFocused();
 
   return (
     <YStack fullscreen padding="$3">
@@ -64,6 +62,7 @@ export default function Index() {
         />
 
         <ListItem
+          onPress={() => router.push(`/sign-in`)}
           theme="red_active"
           hoverTheme
           icon={LogOut}
@@ -72,7 +71,6 @@ export default function Index() {
           Sair
         </ListItem>
       </YStack>
-      {isFocused && <StatusBar style="light" />}
     </YStack>
   );
 }
