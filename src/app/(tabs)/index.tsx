@@ -1,4 +1,5 @@
 import { useIsFocused } from "@react-navigation/native";
+import { Image } from "expo-image";
 import { StatusBar } from "expo-status-bar";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { H3, Text, XStack, YStack } from "tamagui";
@@ -10,10 +11,14 @@ export default function Index() {
   return (
     <YStack fullscreen paddingTop={insets.top} backgroundColor="$sms">
       <YStack>
-        <XStack padding="$3" alignItems="center">
+        <XStack padding="$4" alignItems="center" justifyContent="space-between">
           <H3 color="white" marginLeft="$3">
-            EasyBee
+            Bem vindo, Cesar
           </H3>
+          <Image
+            style={{ width: 35, height: 30 }}
+            source={require("./../../assets/icon_easybee_black.png")}
+          />
         </XStack>
       </YStack>
       <YStack
