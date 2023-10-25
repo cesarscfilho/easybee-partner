@@ -3,7 +3,7 @@ import { ExpoConfig } from "expo/config";
 const projectId = "0653875e-c929-486d-a05b-0dacf79007d5";
 const name =
   process.env.EXPO_PUBLIC_APP_VARIANT === "production"
-    ? "Easybee - Parceiro"
+    ? "Easybee - Prestador de serviço"
     : "ESBP Dev";
 
 const scheme =
@@ -29,6 +29,10 @@ const config: ExpoConfig = {
     silentLaunch: true,
   },
   assetBundlePatterns: ["**/*"],
+  android: {
+    package: "com.ancarp.easybeepartner",
+    versionCode: 1,
+  },
   experiments: {
     tsconfigPaths: true,
   },
