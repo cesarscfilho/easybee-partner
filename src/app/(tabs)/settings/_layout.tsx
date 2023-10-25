@@ -10,6 +10,13 @@ export default function Layout() {
         }}
       />
       <Stack.Screen
+        name="profile"
+        options={{
+          title: "Perfil",
+          headerBackTitle: "Voltar",
+        }}
+      />
+      <Stack.Screen
         name="bank-informations"
         options={{
           title: "Dados Bancários",

@@ -2,7 +2,6 @@ import {
   ChevronRight,
   UserCircle,
   Wrench,
-  Mail,
   MapPin,
   Wallet,
   LogOut,
@@ -24,6 +23,7 @@ export default function Index() {
       </YStack>
       <YStack paddingTop="$5" separator={<Separator />}>
         <ListItem
+          onPress={() => router.push(`/(tabs)/settings/profile`)}
           title="Perfil"
           subTitle="(27) 12345-6789"
           icon={UserCircle}
@@ -34,13 +34,6 @@ export default function Index() {
           title="Serviços"
           subTitle="Diarista, Faxineiro"
           icon={Wrench}
-          iconAfter={ChevronRight}
-        />
-
-        <ListItem
-          title="Email"
-          subTitle="cesar@gmail.com"
-          icon={Mail}
           iconAfter={ChevronRight}
         />
 
