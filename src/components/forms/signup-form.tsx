@@ -89,6 +89,7 @@ export function SignUpForm() {
                 )}
                 name="name"
               />
+
               <Controller
                 control={control}
                 rules={{

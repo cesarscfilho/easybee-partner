@@ -1,5 +1,9 @@
 import { useForm, Controller } from "react-hook-form";
-import { Button, Form, Input, Label, YStack } from "tamagui";
+import { Button, Form, Input, Label, XStack, YStack } from "tamagui";
+
+import { UserAvatar } from "../use-avatar";
+
+import { useLibrary } from "@/hooks/use-libary-picker";
 
 type Inputs = {
   name: string;
@@ -9,6 +13,8 @@ type Inputs = {
 };
 
 export function UpdateProfileForm() {
+  const { image: imageUri, pickImageLibary } = useLibrary();
+
   const {
     handleSubmit,
     control,
@@ -35,6 +41,14 @@ export function UpdateProfileForm() {
       justifyContent="space-between"
     >
       <YStack space="$1" gap="$2">
+        <YStack space="$4">
+          <Label>Foto de perfil</Label>
+          <XStack alignItems="center" space="$5">
+            <UserAvatar imageUri={imageUri} />
+            <Button onPress={() => pickImageLibary()}>Enviar nova foto</Button>
+          </XStack>
+        </YStack>
+
         <Controller
           control={control}
           rules={{
