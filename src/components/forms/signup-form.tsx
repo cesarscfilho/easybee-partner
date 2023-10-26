@@ -222,7 +222,7 @@ export function SignUpForm() {
       ) : null}
 
       <Form.Trigger marginBottom="$4" asChild>
-        <Button theme={"yellow"}>Proxímo</Button>
+        <Button theme={"yellow_active"}>Proxímo</Button>
       </Form.Trigger>
     </Form>
   );

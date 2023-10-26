@@ -10,7 +10,7 @@ export function UserAvatar({ imageUri }: UserAvatarProps) {
     <Avatar circular size="$10" backgroundColor="$color">
       <Image
         accessibilityLabel="Cam"
-        source={imageUri ?? ""}
+        source={imageUri ?? require("../assets/male_avatar.svg")}
         style={{ width: "100%", height: "100%" }}
       />
     </Avatar>

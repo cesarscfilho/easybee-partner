@@ -81,7 +81,7 @@ export function SignInForm() {
       >
         <Text>Esqueceu sua senha?</Text>
         <Form.Trigger asChild>
-          <Button marginTop="$4" theme={"yellow"}>
+          <Button marginTop="$4" theme={"yellow_active"}>
             Entrar
           </Button>
         </Form.Trigger>
