@@ -1,4 +1,3 @@
-import { useIsFocused } from "@react-navigation/native";
 import {
   ChevronRight,
   UserCircle,
@@ -19,7 +18,11 @@ export default function Index() {
   return (
     <YStack fullscreen padding="$3">
       <YStack alignItems="center" space="$3">
-        <UserAvatar />
+        <UserAvatar
+          imageUri={
+            "https://cdn.dribbble.com/users/12700413/avatars/normal/open-uri20220805-28419-13s585q?1659728325"
+          }
+        />
         <H3>Cesar Silva</H3>
       </YStack>
       <YStack paddingTop="$5" separator={<Separator />}>
