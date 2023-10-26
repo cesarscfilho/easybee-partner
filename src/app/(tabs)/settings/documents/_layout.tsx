@@ -2,11 +2,11 @@ import { Stack } from "expo-router";
 
 export default function Layout() {
   return (
-    <Stack screenOptions={{ headerShadowVisible: false }}>
+    <Stack>
       <Stack.Screen
         name="index"
         options={{
-          title: "Solicitações",
+          headerShown: false,
         }}
       />
     </Stack>

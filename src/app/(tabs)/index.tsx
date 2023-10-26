@@ -14,8 +14,8 @@ export default function Index() {
   return (
     <YStack fullscreen paddingTop={insets.top} backgroundColor="$sms">
       <YStack>
-        <XStack padding="$4" alignItems="center" justifyContent="space-between">
-          <H3 color="white" marginLeft="$3">
+        <XStack padding="$3" alignItems="center" justifyContent="space-between">
+          <H3 color="$yellow1Dark" fontWeight="bold" marginLeft="$3">
             Bem vindo, Cesar
           </H3>
           <Image
@@ -33,7 +33,7 @@ export default function Index() {
         <YStack height={170}>
           <Text
             backgroundColor="$sms"
-            color="white"
+            color="$yellow1Dark"
             paddingVertical="$3"
             paddingHorizontal="$3"
             fontWeight="bold"
@@ -49,6 +49,7 @@ export default function Index() {
             <Button
               onPress={() => router.push(`/(tabs)/pending`)}
               theme="green_active"
+              height={"$8"}
             >
               Você possui 2 contratos pendentes
               <ChevronRight />
@@ -58,7 +59,7 @@ export default function Index() {
         <YStack flexGrow={2}>
           <Text
             backgroundColor="$sms"
-            color="white"
+            color="$yellow1Dark"
             paddingVertical="$3"
             paddingHorizontal="$3"
             fontWeight="bold"

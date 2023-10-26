@@ -143,7 +143,7 @@ export function UpdateProfileForm() {
       </YStack>
 
       <Form.Trigger asChild>
-        <Button marginTop="$4" theme={"yellow"}>
+        <Button marginTop="$4" theme={"yellow_active"}>
           Atualizar
         </Button>
       </Form.Trigger>

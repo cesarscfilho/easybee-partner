@@ -71,7 +71,7 @@ export default function RootLayout() {
 
   return (
     <TamaguiProvider config={config}>
-      <Theme name={"dark"}>
+      <Theme name={activeColorScheme}>
         <NavigationThemeProvider>
           <SessionProvider>
             <SafeAreaProvider>
