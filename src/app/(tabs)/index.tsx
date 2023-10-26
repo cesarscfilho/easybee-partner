@@ -68,7 +68,7 @@ export default function Index() {
           </Text>
         </YStack>
       </YStack>
-      {isFocused && <StatusBar style="light" />}
+      {isFocused && <StatusBar style="dark" />}
     </YStack>
   );
 }

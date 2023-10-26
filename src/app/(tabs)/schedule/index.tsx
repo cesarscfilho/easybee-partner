@@ -1,5 +1,4 @@
 import { ChevronLeft, ChevronRight } from "@tamagui/lucide-icons";
-import { StatusBar } from "expo-status-bar";
 import { H4, ListItem, Separator, Text, XStack, YStack } from "tamagui";
 
 export default function Index() {
@@ -53,7 +52,6 @@ export default function Index() {
         <ListItem iconAfter={ChevronRight}>Lorem weorw werwer</ListItem>
         <ListItem iconAfter={ChevronRight}>Lorem weorw werwer</ListItem>
       </YStack>
-      <StatusBar style="light" />
     </YStack>
   );
 }
