@@ -11,7 +11,12 @@ import {
 
 export function ContractPendingCard(props: CardProps) {
   return (
-    <Card size="$3" bordered {...props}>
+    <Card
+      size="$3"
+      bordered
+      {...props}
+      backgroundColor={"$backgroundTransparent"}
+    >
       <Card.Header padded space="$2">
         <Text fontWeight="bold" fontSize="$5">
           Solano Faria Madeira

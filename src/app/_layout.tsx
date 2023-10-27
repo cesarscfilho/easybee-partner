@@ -3,6 +3,7 @@ import "@tamagui/core/reset.css";
 import { TamaguiProvider, Theme } from "@tamagui/core";
 import { useFonts } from "expo-font";
 import { Slot, useRouter, useSegments } from "expo-router";
+import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { AppState, useColorScheme } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
@@ -71,10 +72,11 @@ export default function RootLayout() {
 
   return (
     <TamaguiProvider config={config}>
-      <Theme name={activeColorScheme}>
+      <Theme name={"dark"}>
         <NavigationThemeProvider>
           <SessionProvider>
             <SafeAreaProvider>
+              <StatusBar style="light" />
               <AppLayout />
             </SafeAreaProvider>
           </SessionProvider>

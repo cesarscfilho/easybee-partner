@@ -45126,7 +45126,7 @@
         "id": "light_yellow_alt2_SwitchThumb"
       }
     },
-    "defaultTheme": "yellow",
+    "defaultTheme": "dark",
     "shouldAddPrefersColorThemes": false,
     "themeClassNameOnRoot": false,
     "tokens": {
@@ -46479,7 +46479,7 @@
           "isVar": true,
           "key": "$sms",
           "name": "color-193",
-          "val": "#facc15",
+          "val": "#eab308",
           "variable": ""
         }
       },
@@ -48777,7 +48777,7 @@
         "isVar": true,
         "key": "$sms",
         "name": "color-193",
-        "val": "#facc15",
+        "val": "#eab308",
         "variable": ""
       },
       "$radius.0": {

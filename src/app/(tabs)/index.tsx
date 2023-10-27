@@ -15,7 +15,7 @@ export default function Index() {
     <YStack fullscreen paddingTop={insets.top} backgroundColor="$sms">
       <YStack>
         <XStack padding="$3" alignItems="center" justifyContent="space-between">
-          <H3 color="$yellow1Dark" fontWeight="bold" marginLeft="$3">
+          <H3 fontWeight="bold" marginLeft="$3">
             Bem vindo, Cesar
           </H3>
           <Image
@@ -33,7 +33,6 @@ export default function Index() {
         <YStack height={170}>
           <Text
             backgroundColor="$sms"
-            color="$yellow1Dark"
             paddingVertical="$3"
             paddingHorizontal="$3"
             fontWeight="bold"
@@ -59,7 +58,6 @@ export default function Index() {
         <YStack flexGrow={2}>
           <Text
             backgroundColor="$sms"
-            color="$yellow1Dark"
             paddingVertical="$3"
             paddingHorizontal="$3"
             fontWeight="bold"
