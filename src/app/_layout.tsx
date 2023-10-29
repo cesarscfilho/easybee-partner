@@ -12,10 +12,6 @@ import { SessionProvider, useSession } from "@/providers/auth-provider";
 import { NavigationThemeProvider } from "@/providers/navigation-theme-provider";
 import config from "@/tamagui.config";
 
-export const unstable_settings = {
-  initialRouteName: "onboarding",
-};
-
 const AppLayout = () => {
   const session = useSession();
   const segments = useSegments();
