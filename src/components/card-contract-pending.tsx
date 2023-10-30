@@ -11,8 +11,13 @@ import {
 
 export function ContractPendingCard(props: CardProps) {
   return (
-    <Card size="$3" bordered {...props}>
-      <Card.Header shadowColor="$colorTransparent" padded space="$2">
+    <Card
+      size="$3"
+      bordered
+      {...props}
+      backgroundColor={"$backgroundTransparent"}
+    >
+      <Card.Header padded space="$2">
         <Text fontWeight="bold" fontSize="$5">
           Solano Faria Madeira
           <Text fontWeight="normal"> solicitou o serviço de Faxineria</Text>
@@ -22,7 +27,7 @@ export function ContractPendingCard(props: CardProps) {
           <ListItem icon={MapPin}>Eurico Salles, Serra</ListItem>
         </YStack>
       </Card.Header>
-      <Card.Footer shadowColor="$colorTransparent" padded paddingTop="$-0.25">
+      <Card.Footer padded paddingTop="$-0.25">
         <XStack flex={1} />
         <Button size="$3" theme={"yellow_active"}>
           Aceitar

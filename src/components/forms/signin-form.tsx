@@ -1,7 +1,10 @@
-import { useRouter } from "expo-router";
+import { router } from "expo-router";
+import React from "react";
 import { useForm, Controller } from "react-hook-form";
 import Animated, { FadeInDown } from "react-native-reanimated";
-import { Button, Form, Input, Text } from "tamagui";
+import { Button, Form, Input, Spinner, Text, Theme } from "tamagui";
+
+import { useAuth } from "@/hooks/use-auth";
 
 type Inputs = {
   email: string;
@@ -9,7 +12,9 @@ type Inputs = {
 };
 
 export function SignInForm() {
-  const router = useRouter();
+  const [isLoading, setIsLoading] = React.useState<boolean>(false);
+  const { signIn } = useAuth();
+
   const {
     handleSubmit,
     control,
@@ -21,71 +26,73 @@ export function SignInForm() {
     },
   });
 
-  const onSubmit = (inputs: Inputs) => {
-    router.replace("/(tabs)");
+  const onSubmit = async (inputs: Inputs) => {
+    setIsLoading(true);
+    await signIn(inputs);
+    router.replace("/(app)/(tabs)");
+    setIsLoading(false);
   };
 
   return (
-    <Form
-      minWidth="100%"
-      gap="$2"
-      onSubmit={handleSubmit(onSubmit)}
-      borderRadius="$4"
-      space="$1"
-    >
-      <Controller
-        control={control}
-        rules={{
-          required: true,
-        }}
-        render={({ field: { onChange, onBlur, value } }) => (
-          <Animated.View
-            entering={FadeInDown.delay(200).duration(1000).springify()}
-          >
-            <Input
-              onBlur={onBlur}
-              onChangeText={onChange}
-              value={value}
-              placeholder="Email"
-              theme={errors.email ? "red" : null}
-            />
-          </Animated.View>
-        )}
-        name="email"
-      />
-
-      <Controller
-        control={control}
-        rules={{
-          required: true,
-        }}
-        render={({ field: { onChange, onBlur, value } }) => (
-          <Animated.View
-            entering={FadeInDown.delay(400).duration(1000).springify()}
-          >
-            <Input
-              secureTextEntry
-              onBlur={onBlur}
-              onChangeText={onChange}
-              value={value}
-              placeholder="Senha"
-              theme={errors.email ? "red" : null}
-            />
-          </Animated.View>
-        )}
-        name="password"
-      />
-
-      <Animated.View
-        entering={FadeInDown.delay(600).duration(1000).springify()}
+    <Theme name="light">
+      <Form
+        minWidth="100%"
+        gap="$4"
+        onSubmit={handleSubmit(onSubmit)}
+        borderRadius="$4"
       >
-        <Text>Esqueceu sua senha?</Text>
-        <Form.Trigger asChild>
-          <Button marginTop="$4" theme={"yellow_active"}>
-            Entrar
-          </Button>
-        </Form.Trigger>
-      </Animated.View>
-    </Form>
+        <Controller
+          control={control}
+          rules={{
+            required: true,
+          }}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <Animated.View
+              entering={FadeInDown.delay(200).duration(1000).springify()}
+            >
+              <Input
+                onBlur={onBlur}
+                onChangeText={onChange}
+                value={value}
+                placeholder="Email"
+                theme={errors.email ? "red" : null}
+              />
+            </Animated.View>
+          )}
+          name="email"
+        />
+
+        <Controller
+          control={control}
+          rules={{
+            required: true,
+          }}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <Animated.View
+              entering={FadeInDown.delay(400).duration(1000).springify()}
+            >
+              <Input
+                secureTextEntry
+                onBlur={onBlur}
+                onChangeText={onChange}
+                value={value}
+                placeholder="Senha"
+                theme={errors.email ? "red" : null}
+              />
+            </Animated.View>
+          )}
+          name="password"
+        />
+
+        <Animated.View
+          entering={FadeInDown.delay(600).duration(1000).springify()}
+        >
+          <Text>Esqueceu sua senha?</Text>
+          <Form.Trigger asChild>
+            <Button marginTop="$4">{isLoading ? <Spinner /> : "Entrar"}</Button>
+          </Form.Trigger>
+        </Animated.View>
+      </Form>
+    </Theme>
   );
 }

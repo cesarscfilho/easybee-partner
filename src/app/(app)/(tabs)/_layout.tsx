@@ -31,7 +31,7 @@ export default function TabsLayout() {
       <Tabs.Screen
         name="settings"
         options={{
-          title: "Settings",
+          title: "Configurações",
           headerShown: false,
           tabBarIcon: ({ color }) => <Settings color={color} />,
         }}

@@ -1,0 +1,21 @@
+export type Partner = {
+  accepted_pending_terms: boolean;
+  accepted_terms: boolean;
+  birth_date: string;
+  confirmation_code: string;
+  cpf_cnpj: string;
+  created_at: string;
+  email: string;
+  id: number;
+  name: string;
+  new_password_code: any;
+  paid_register: boolean;
+  password_digest: string;
+  phone: string;
+  privacy_policy_id: number;
+  rating: number;
+  status: string;
+  terms_of_use_id: number;
+  updated_at: string;
+  user_type: string;
+};

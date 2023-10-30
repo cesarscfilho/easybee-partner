@@ -1,35 +1,49 @@
 import React from "react";
 
 import { useStorageState } from "@/hooks/use-storage-state";
+import { api } from "@/lib/api";
 
-const AuthContext = React.createContext<{
-  signIn: () => void;
+export const AuthContext = React.createContext<{
+  signIn: ({
+    email,
+    password,
+  }: {
+    email: string;
+    password: string;
+  }) => Promise<void>;
   signOut: () => void;
-  session?: string | null;
+  session: string | null;
   isLoading: boolean;
-} | null>(null);
+}>({
+  signIn: async () => {},
 
-// This hook can be used to access the user info.
-export function useSession() {
-  const value = React.useContext(AuthContext);
-  if (process.env.NODE_ENV !== "production") {
-    if (!value) {
-      throw new Error("useSession must be wrapped in a <SessionProvider />");
-    }
-  }
+  signOut: () => {},
+  session: null,
+  isLoading: true,
+});
 
-  return value;
-}
-
-export function SessionProvider(props: React.PropsWithChildren) {
+export function SessionProvider({ children }: { children: React.ReactNode }) {
   const [[isLoading, session], setSession] = useStorageState("session");
 
   return (
     <AuthContext.Provider
       value={{
-        signIn: () => {
-          // Perform sign-in logic here
-          setSession("xxx");
+        signIn: async ({
+          email,
+          password,
+        }: {
+          email: string;
+          password: string;
+        }) => {
+          const res = await api.post("/login", {
+            email,
+            password,
+            user_type: "partner",
+          });
+          console.log(res);
+          if (res.status === 200) {
+            setSession(res.data);
+          }
         },
         signOut: () => {
           setSession(null);
@@ -38,7 +52,7 @@ export function SessionProvider(props: React.PropsWithChildren) {
         isLoading,
       }}
     >
-      {props.children}
+      {children}
     </AuthContext.Provider>
   );
 }
