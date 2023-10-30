@@ -1,38 +1,16 @@
-import "@tamagui/core/reset.css";
-
 import { TamaguiProvider, Theme } from "@tamagui/core";
 import { useFonts } from "expo-font";
-import { Slot, useRouter, useSegments } from "expo-router";
+import { Slot } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { AppState, useColorScheme } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
-import { SessionProvider, useSession } from "@/providers/auth-provider";
+import { SessionProvider } from "@/providers/auth-provider";
 import { NavigationThemeProvider } from "@/providers/navigation-theme-provider";
 import config from "@/tamagui.config";
 
-const AppLayout = () => {
-  const session = useSession();
-  const segments = useSegments();
-  const router = useRouter();
-
-  React.useEffect(() => {
-    if (!session?.isLoading) return;
-
-    const inTabsGroup = segments[0] === "(tabs)";
-
-    if (session?.session && !inTabsGroup) {
-      router.replace("/(tabs)");
-    } else if (!session?.session) {
-      router.replace("/sign-in");
-    }
-  }, [session?.session]);
-
-  return <Slot />;
-};
-
-export default function RootLayout() {
+export default function Root() {
   const appState = React.useRef(AppState.currentState);
   const [appStateVisible, setAppStateVisible] = React.useState(
     appState.current,
@@ -73,7 +51,7 @@ export default function RootLayout() {
           <SessionProvider>
             <SafeAreaProvider>
               <StatusBar style="light" />
-              <AppLayout />
+              <Slot />
             </SafeAreaProvider>
           </SessionProvider>
         </NavigationThemeProvider>

@@ -1,7 +1,9 @@
-import { useRouter } from "expo-router";
+import React from "react";
 import { useForm, Controller } from "react-hook-form";
 import Animated, { FadeInDown } from "react-native-reanimated";
 import { Button, Form, Input, Text, Theme } from "tamagui";
+
+import { useAuth } from "@/hooks/use-auth";
 
 type Inputs = {
   email: string;
@@ -9,7 +11,8 @@ type Inputs = {
 };
 
 export function SignInForm() {
-  const router = useRouter();
+  const { signIn } = useAuth();
+
   const {
     handleSubmit,
     control,
@@ -22,7 +25,7 @@ export function SignInForm() {
   });
 
   const onSubmit = (inputs: Inputs) => {
-    router.replace("/(tabs)");
+    signIn(inputs);
   };
 
   return (

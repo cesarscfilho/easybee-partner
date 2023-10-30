@@ -11,9 +11,11 @@ import { useRouter } from "expo-router";
 import { H3, ListItem, Separator, YStack } from "tamagui";
 
 import { UserAvatar } from "@/components/use-avatar";
+import { useAuth } from "@/hooks/use-auth";
 
 export default function Index() {
   const router = useRouter();
+  const { signOut } = useAuth();
 
   return (
     <YStack fullscreen padding="$3">
@@ -61,7 +63,7 @@ export default function Index() {
         />
 
         <ListItem
-          onPress={() => router.push(`/sign-in`)}
+          onPress={() => signOut()}
           theme="red_active"
           hoverTheme
           icon={LogOut}

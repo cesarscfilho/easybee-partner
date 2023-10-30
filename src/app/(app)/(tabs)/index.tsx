@@ -20,7 +20,7 @@ export default function Index() {
           </H3>
           <Image
             style={{ width: 35, height: 30 }}
-            source={require("./../../assets/icon_easybee_black.png")}
+            source={require("@/assets/icon_easybee_black.png")}
           />
         </XStack>
       </YStack>

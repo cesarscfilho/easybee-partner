@@ -17,7 +17,7 @@ export default function SignIn() {
     >
       <View marginTop="$9">
         <Image
-          source={require(`../../assets/easybee_logo_black.png`)}
+          source={require(`@/assets/easybee_logo_black.png`)}
           style={{ width: 250, height: 130 }}
         />
       </View>

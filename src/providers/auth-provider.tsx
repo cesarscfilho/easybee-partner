@@ -1,35 +1,49 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import React from "react";
 
 import { useStorageState } from "@/hooks/use-storage-state";
-
-const AuthContext = React.createContext<{
-  signIn: () => void;
+import { api } from "@/lib/api";
+export const AuthContext = React.createContext<{
+  signIn: ({ email, password }: { email: string; password: string }) => void;
   signOut: () => void;
   session?: string | null;
   isLoading: boolean;
-} | null>(null);
+}>({
+  signIn: () => {},
+  signOut: () => {},
+  session: null,
+  isLoading: true,
+});
 
-// This hook can be used to access the user info.
-export function useSession() {
-  const value = React.useContext(AuthContext);
-  if (process.env.NODE_ENV !== "production") {
-    if (!value) {
-      throw new Error("useSession must be wrapped in a <SessionProvider />");
-    }
-  }
+export const saveToken = async (token: string) =>
+  await AsyncStorage.setItem("@EASYBEE:token", token);
+export const getToken = async () =>
+  await AsyncStorage.getItem("@EASYBEE:token");
+export const clearToken = async () =>
+  await AsyncStorage.removeItem("@EASYBEE:token");
 
-  return value;
-}
-
-export function SessionProvider(props: React.PropsWithChildren) {
+export function SessionProvider({ children }: { children: React.ReactNode }) {
   const [[isLoading, session], setSession] = useStorageState("session");
 
   return (
     <AuthContext.Provider
       value={{
-        signIn: () => {
-          // Perform sign-in logic here
-          setSession("xxx");
+        signIn: async ({
+          email,
+          password,
+        }: {
+          email: string;
+          password: string;
+        }) => {
+          const res = await api.post("/login", {
+            email,
+            password,
+            user_type: "partner",
+          });
+
+          if (res.status === 200) {
+            setSession(res.data.token);
+          }
         },
         signOut: () => {
           setSession(null);
@@ -38,7 +52,7 @@ export function SessionProvider(props: React.PropsWithChildren) {
         isLoading,
       }}
     >
-      {props.children}
+      {children}
     </AuthContext.Provider>
   );
 }
