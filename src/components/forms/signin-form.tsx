@@ -1,7 +1,8 @@
+import { router } from "expo-router";
 import React from "react";
 import { useForm, Controller } from "react-hook-form";
 import Animated, { FadeInDown } from "react-native-reanimated";
-import { Button, Form, Input, Text, Theme } from "tamagui";
+import { Button, Form, Input, Spinner, Text, Theme } from "tamagui";
 
 import { useAuth } from "@/hooks/use-auth";
 
@@ -11,6 +12,7 @@ type Inputs = {
 };
 
 export function SignInForm() {
+  const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const { signIn } = useAuth();
 
   const {
@@ -24,8 +26,11 @@ export function SignInForm() {
     },
   });
 
-  const onSubmit = (inputs: Inputs) => {
-    signIn(inputs);
+  const onSubmit = async (inputs: Inputs) => {
+    setIsLoading(true);
+    await signIn(inputs);
+    router.replace("/(app)/(tabs)");
+    setIsLoading(false);
   };
 
   return (
@@ -84,7 +89,7 @@ export function SignInForm() {
         >
           <Text>Esqueceu sua senha?</Text>
           <Form.Trigger asChild>
-            <Button marginTop="$4">Entrar</Button>
+            <Button marginTop="$4">{isLoading ? <Spinner /> : "Entrar"}</Button>
           </Form.Trigger>
         </Animated.View>
       </Form>

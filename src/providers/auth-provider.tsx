@@ -1,26 +1,26 @@
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import React from "react";
 
 import { useStorageState } from "@/hooks/use-storage-state";
 import { api } from "@/lib/api";
+
 export const AuthContext = React.createContext<{
-  signIn: ({ email, password }: { email: string; password: string }) => void;
+  signIn: ({
+    email,
+    password,
+  }: {
+    email: string;
+    password: string;
+  }) => Promise<void>;
   signOut: () => void;
-  session?: string | null;
+  session: string | null;
   isLoading: boolean;
 }>({
-  signIn: () => {},
+  signIn: async () => {},
+
   signOut: () => {},
   session: null,
   isLoading: true,
 });
-
-export const saveToken = async (token: string) =>
-  await AsyncStorage.setItem("@EASYBEE:token", token);
-export const getToken = async () =>
-  await AsyncStorage.getItem("@EASYBEE:token");
-export const clearToken = async () =>
-  await AsyncStorage.removeItem("@EASYBEE:token");
 
 export function SessionProvider({ children }: { children: React.ReactNode }) {
   const [[isLoading, session], setSession] = useStorageState("session");
@@ -40,9 +40,9 @@ export function SessionProvider({ children }: { children: React.ReactNode }) {
             password,
             user_type: "partner",
           });
-
+          console.log(res);
           if (res.status === 200) {
-            setSession(res.data.token);
+            setSession(res.data);
           }
         },
         signOut: () => {
