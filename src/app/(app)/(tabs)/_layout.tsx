@@ -1,4 +1,4 @@
-import { Calendar, Clock, Home, Settings } from "@tamagui/lucide-icons";
+import { Bell, Calendar, Clock, Home, Settings } from "@tamagui/lucide-icons";
 import { Tabs } from "expo-router";
 
 export default function TabsLayout() {
@@ -26,6 +26,14 @@ export default function TabsLayout() {
           title: "Solicitações",
           headerShown: false,
           tabBarIcon: ({ color }) => <Clock color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="notifications"
+        options={{
+          title: "Notificações",
+          headerShown: false,
+          tabBarIcon: ({ color }) => <Bell color={color} />,
         }}
       />
       <Tabs.Screen

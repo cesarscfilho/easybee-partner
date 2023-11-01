@@ -20,9 +20,9 @@ export default function AppLayout() {
     );
   }
 
-  if (!session) {
-    return <Redirect href="/sign-in" />;
-  }
+  // if (!session) {
+  //   return <Redirect href="/sign-in" />;
+  // }
 
   return <Stack screenOptions={{ headerShown: false }} />;
 }

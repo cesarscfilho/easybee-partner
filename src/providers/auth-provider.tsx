@@ -16,7 +16,6 @@ export const AuthContext = React.createContext<{
   isLoading: boolean;
 }>({
   signIn: async () => {},
-
   signOut: () => {},
   session: null,
   isLoading: true,
@@ -42,7 +41,7 @@ export function SessionProvider({ children }: { children: React.ReactNode }) {
           });
           console.log(res);
           if (res.status === 200) {
-            setSession(res.data);
+            setSession(res.data.token);
           }
         },
         signOut: () => {
