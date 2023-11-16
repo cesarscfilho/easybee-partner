@@ -12,6 +12,7 @@ export default function AuthLayout() {
           headerBackTitle: "Voltar",
         }}
       />
+      <Stack.Screen name="confirm-code" options={{ headerShown: false }} />
     </Stack>
   );
 }

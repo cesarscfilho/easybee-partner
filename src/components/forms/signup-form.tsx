@@ -16,6 +16,7 @@ type Inputs = {
   cpf: string;
   date: string;
   confirmCode: string;
+  acceptedTerms: boolean;
 };
 
 export function SignUpForm() {

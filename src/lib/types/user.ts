@@ -1,4 +1,4 @@
-export type Partner = {
+export type User = {
   accepted_pending_terms: boolean;
   accepted_terms: boolean;
   birth_date: string;

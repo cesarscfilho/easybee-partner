@@ -10,7 +10,11 @@ export function LoadingMessage({
   message ??= "Loading";
 
   return (
-    <YStack fullscreen={true} justifyContent="center">
+    <YStack
+      fullscreen={true}
+      justifyContent="center"
+      backgroundColor="$background"
+    >
       {showSpinner && <Spinner size="large" />}
       <Text textAlign="center" marginTop="$6">
         {message} …

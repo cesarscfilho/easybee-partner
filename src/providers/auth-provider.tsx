@@ -1,7 +1,8 @@
 import React from "react";
 
 import { useStorageState } from "@/hooks/use-storage-state";
-import { api } from "@/lib/api";
+import { api, setDefaultHeaders } from "@/lib/api";
+import { User } from "@/lib/types/user";
 
 export const AuthContext = React.createContext<{
   signIn: ({
@@ -12,17 +13,36 @@ export const AuthContext = React.createContext<{
     password: string;
   }) => Promise<void>;
   signOut: () => void;
-  session: string | null;
+  token: string | null;
   isLoading: boolean;
+  user: User | null;
+  setUser: React.Dispatch<React.SetStateAction<User | null>>;
 }>({
   signIn: async () => {},
   signOut: () => {},
-  session: null,
+  token: null,
   isLoading: true,
+  user: null,
+  setUser: () => {},
 });
 
 export function SessionProvider({ children }: { children: React.ReactNode }) {
-  const [[isLoading, session], setSession] = useStorageState("session");
+  const [[isLoading, token], setSession] = useStorageState("token");
+  const [user, setUser] = React.useState<User | null>(null);
+
+  async function getUser() {
+    const { data } = await api.get("check_auth");
+    setUser(data.account);
+  }
+
+  React.useEffect(() => {
+    if (token) setDefaultHeaders(token);
+  }, [token]);
+
+  // Sync user info
+  React.useEffect(() => {
+    if (token && !user) getUser();
+  }, [token, user]);
 
   return (
     <AuthContext.Provider
@@ -39,16 +59,19 @@ export function SessionProvider({ children }: { children: React.ReactNode }) {
             password,
             user_type: "partner",
           });
-          console.log(res);
+
           if (res.status === 200) {
             setSession(res.data.token);
+            setUser(res.data.account);
           }
         },
         signOut: () => {
           setSession(null);
         },
-        session,
+        token,
         isLoading,
+        user,
+        setUser,
       }}
     >
       {children}

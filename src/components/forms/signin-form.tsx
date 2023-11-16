@@ -27,10 +27,14 @@ export function SignInForm() {
   });
 
   const onSubmit = async (inputs: Inputs) => {
-    setIsLoading(true);
-    await signIn(inputs);
-    router.replace("/(app)/(tabs)");
-    setIsLoading(false);
+    try {
+      setIsLoading(true);
+      await signIn(inputs);
+      router.replace("/(app)/(tabs)");
+      setIsLoading(false);
+    } catch (err) {
+      setIsLoading(false);
+    }
   };
 
   return (
