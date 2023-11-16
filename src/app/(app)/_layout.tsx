@@ -19,9 +19,9 @@ export default function AppLayout() {
     return <LoadingMessage message="Carregando suas informações" />;
   }
 
-  if (user?.confirmation_code === "") {
-    return <Redirect href="/confirm-code" />;
-  }
+  // if (user?.confirmation_code === "") {
+  //   return <Redirect href="/confirm-code" />;
+  // }
 
   return <Stack screenOptions={{ headerShown: false }} />;
 }
