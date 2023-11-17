@@ -7,21 +7,31 @@ import {
   LogOut,
   CreditCard,
 } from "@tamagui/lucide-icons";
-import { useRouter } from "expo-router";
+import { Redirect, useRouter } from "expo-router";
+import React from "react";
 import { H3, ListItem, Separator, YStack } from "tamagui";
 
 import { UserAvatar } from "@/components/use-avatar";
+import { usePartner } from "@/hooks/data/use-partner";
 import { useAuth } from "@/hooks/use-auth";
 
 export default function Index() {
   const router = useRouter();
-  const { signOut } = useAuth();
+  const { signOut, user } = useAuth();
+
+  if (!user) return <Redirect href="/sign-in" />;
+
+  const { partner } = usePartner();
+
+  if (!partner) return null;
 
   return (
     <YStack fullscreen padding="$3">
       <YStack alignItems="center" space="$3">
-        <UserAvatar imageUri={null} />
-        <H3>Cesar Silva</H3>
+        <UserAvatar
+          imageUri={partner.personal_document.profile_photo.url ?? null}
+        />
+        <H3>{partner.name}</H3>
       </YStack>
       <YStack paddingTop="$5" separator={<Separator />}>
         <ListItem

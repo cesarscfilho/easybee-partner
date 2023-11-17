@@ -1,4 +1,5 @@
 import { TamaguiProvider, Theme } from "@tamagui/core";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useFonts } from "expo-font";
 import { Slot } from "expo-router";
 import { StatusBar } from "expo-status-bar";
@@ -44,18 +45,22 @@ export default function Root() {
     return null;
   }
 
+  const queryClient = new QueryClient();
+
   return (
     <TamaguiProvider config={config}>
-      <Theme name={"dark"}>
-        <NavigationThemeProvider>
-          <SessionProvider>
-            <SafeAreaProvider>
-              <StatusBar style="light" />
-              <Slot />
-            </SafeAreaProvider>
-          </SessionProvider>
-        </NavigationThemeProvider>
-      </Theme>
+      <QueryClientProvider client={queryClient}>
+        <Theme name={"dark"}>
+          <NavigationThemeProvider>
+            <SessionProvider>
+              <SafeAreaProvider>
+                <StatusBar style="light" />
+                <Slot />
+              </SafeAreaProvider>
+            </SessionProvider>
+          </NavigationThemeProvider>
+        </Theme>
+      </QueryClientProvider>
     </TamaguiProvider>
   );
 }

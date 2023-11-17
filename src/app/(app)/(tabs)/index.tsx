@@ -1,22 +1,28 @@
 import { useIsFocused } from "@react-navigation/native";
 import { ChevronRight } from "@tamagui/lucide-icons";
 import { Image } from "expo-image";
-import { useRouter } from "expo-router";
+import { Redirect, useRouter } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Button, H3, Text, XStack, YStack } from "tamagui";
+
+import { useAuth } from "@/hooks/use-auth";
 
 export default function Index() {
   const isFocused = useIsFocused();
   const insets = useSafeAreaInsets();
   const router = useRouter();
 
+  const { user } = useAuth();
+
+  if (!user) return <Redirect href="sign-in" />;
+
   return (
     <YStack fullscreen paddingTop={insets.top} backgroundColor="$sms">
       <YStack>
         <XStack padding="$3" alignItems="center" justifyContent="space-between">
           <H3 fontWeight="bold" marginLeft="$3">
-            Bem vindo, Cesar
+            Bem vindo, {user.name}
           </H3>
           <Image
             style={{ width: 35, height: 30 }}
